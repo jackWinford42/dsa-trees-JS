@@ -92,12 +92,14 @@ class BinaryTree {
     while (treeQueue.length) {
       const currNode = treeQueue.shift();
 
+      //check if this nodes value is closer to the lowerBound than the
+      // current closest.
       const lessThanCurrVal = !nextLargest || currNode.val < nextLargest;
 
       if (currNode.val > lowerBound && lessThanCurrVal) nextLargest = currNode.val;
 
+      //add the nodes children to the queue
       if (currNode.left) treeQueue.push(currNode.left);
-
       if (currNode.right) treeQueue.push(currNode.right);
     }
 
